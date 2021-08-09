@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="app4" ng-cloak lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AngularJS Tutorial 4</title>
+    <style>
+      [ng\:cloak],
+      [ng-cloak],
+      .ng-cloak {
+        display: none;
+      }
+      .bluetext {
+        color: blue;
+      }
+      .boldtext {
+        font-weight: bold;
+      }
+      .stripedblue {
+        color: #007fff;
+        background-color: #dbe9f4;
+      }
+      .stripedbeige {
+        color: #cc0000;
+        background-color: #f5f5dc;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-controller="eventCtrl">
+      <input
+        type="text"
+        ng-blur="blur = blur + 1"
+        ng-click="click = click + 1"
+        ng-dblclick="dblclick = dblclick + 1"
+        ng-copy="copy = copy + 1"
+        ng-paste="paste = paste + 1"
+        ng-cut="cut = cut + 1"
+        ng-focus="focus = focus + 1"
+        ng-model="confirmed"
+        ng-change="change = change + 1"
+        ng-keydown="keydown($event)"
+        ng-mouseenter="mouseenter = mouseenter + 1"
+        ng-mouseleave="mouseleave = mouseleave + 1"
+      />
+      <h4>Blur Events: {{blur}}</h4>
+      <h4>Click Events : {{click}}</h4>
+      <h4>Double Click Events : {{dblclick}}</h4>
+      <h4>Copy Events : {{copy}}</h4>
+      <h4>Paste Events : {{paste}}</h4>
+      <h4>Cut Events : {{cut}}</h4>
+      <h4>Focus Events : {{focus}}</h4>
+      <h4>Change Events : {{change}}</h4>
+      <h4>Keydown Events : {{kdKey}}</h4>
+      <h4>Mouse Enter Events : {{mouseenter}}</h4>
+      <h4>Mouse Leave Events : {{mouseleave}}</h4>
+
+      <div>
+        <button ng-disabled="disableButton">Button</button>
+        <input ng-model="disableButton" type="checkbox" />
+      </div>
+
+      <div>
+        <input ng-model="dayTimeButton" type="checkbox" />
+        <p ng-hide="!dayTimeButton">Good Morning</p>
+        <p ng-hide="dayTimeButton">Good Evening</p>
+      </div>
+
+      <p>
+        <select ng-model="textStyling">
+          <option value="bluetext">Blue Text</option>
+          <option value="boldtext">Bold Text</option>
+        </select>
+      </p>
+      <p ng-class="textStyling">Some Text</p>
+
+      <table>
+        <tr
+          ng-repeat="item in capitals"
+          ng-class-even="'stripedblue'"
+          ng-class-odd="'stripedbeige'"
+        >
+          <td>{{item.city}}</td>
+          <td>{{item.state}}</td>
+        </tr>
+      </table>
+    </div>
+    <!-- Load the AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+    <!-- Load the JS Module -->
+    <script src="js/exam4.js"></script>
+  </body>
+</html>
